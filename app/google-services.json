@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "83880399063",
+    "project_id": "sharephoto-43ee2",
+    "storage_bucket": "sharephoto-43ee2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83880399063:android:78446e49cea747b7ff2092",
+        "android_client_info": {
+          "package_name": "com.hamzaerdas.sharephoto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83880399063-ugq9qpubkhsphaitf6s2hfjd0psoorrb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3eIXlGVXltTtEKCFjgTpnWSzT7frxrjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83880399063-ugq9qpubkhsphaitf6s2hfjd0psoorrb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
