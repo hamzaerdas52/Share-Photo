@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -63,6 +64,27 @@ class UploadActivity : AppCompatActivity() {
         if(imageUri != null){
             imageReference.putFile(imageUri!!)
                 .addOnSuccessListener{
+                    val uploadPictureReference = storage.reference.child("images").child(imageName)
+                    uploadPictureReference.downloadUrl.addOnSuccessListener {
+                        val dowloadUrl = it.toString()
+                        if(auth.currentUser != null){
+                            val postMap = hashMapOf<String, Any>()
+                            postMap.put("dowloadUrl", dowloadUrl)
+                            postMap.put("userEmail", auth.currentUser!!.email!!)
+                            postMap.put("comment", binding.editCommentText.text.toString())
+                            postMap.put("dateTime", Timestamp.now())
+
+                            firestore.collection("post")
+                                .add(postMap)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this@UploadActivity, "Post atýldý.", Toast.LENGTH_LONG).show()
+                                    finish()
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(this@UploadActivity, it.localizedMessage, Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                    }
 
                 }
                 .addOnFailureListener {
